@@ -12,7 +12,7 @@ PostGenius is a full-stack Django application that uses OpenAI's GPT-3.5/4 model
 ![App Main](media/index.PNG)
 ![Dashboard](media/dashboard.PNG)
 ![Generator](media/generator.PNG)
-![History](path/to/your/image2.png)
+![History](media/history.PNG)
 
 ## 🛠️ Tech Stack
 - **Backend:** Python / Django
@@ -26,4 +26,5 @@ PostGenius is a full-stack Django application that uses OpenAI's GPT-3.5/4 model
 3. Create a `.env` file in the root:
    ```env
    OPENAI_API_KEY=your_api_key_here
+
    SECRET_KEY=your_django_secret_key
