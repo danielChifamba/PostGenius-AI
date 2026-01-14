@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg-border-0 rounded-4 overflow-hidden">
+                <div class="bg-primary p-4 text-center text-white">
+                    <h3 class="fw-bold mb-0">Welcome Back</h3>
+                    <p class="small mb-0">Sign in to start generating viral content</p>
+                </div>
+                <div class="card-body p-4 p-md-5">
+
+                    {% if form.errors %}
+                        <div class="alert alert-danger small">Invalid username or password.</div>
+                    {% endif %}
+
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-envelope"></i></span>
+                                <input type="email" class="form-control bg-light border-start-0" placeholder="name@example.com">
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="password" class="form-label">Password</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-light border-end-0"><i class="bi bi-lock"></i></span>
+                                <input type="email" class="form-control bg-light border-start-0" placeholder="**********">
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 py-3 fw-bold rounded-3 shadow-sm mb-3" type="submit">Sign In</button>
+                        <p class="text-center text-muted small">Don't have an account? <a href="{% url 'register' %}" class="text-primary text-decoration-none fw-bold">Register here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

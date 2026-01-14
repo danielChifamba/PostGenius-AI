@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<section class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-3 fw-bold mb-3">Master <span class="gradient-text">Linkdeln</span> Engagement</h1>
+        <p class="lead text-muted mb-5">Create high-performance posts in seconds using AI and Django.</p>
+        <a href="#app" class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow">
+            Start Creating Free <i class="bi bi-arrow-right ms-2"></i>
+        </a>
+    </div>
+</section>
+
+<section id="app" class="py-5 bg-white">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="card app-card p-4 p-md-5">
+                    <h3 class="mb-4 fw-bold">
+                        <i class="bi bi-pencil-square me-2 text-primary"></i>
+                        What's on your mind?
+                    </h3>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-4">
+                            <label for="" class="form-label text-muted">Topic or Idea</label>
+                            <textarea name="topic" class="form-control form-control-lg" rows="4" placeholder="e.g. 5 tips for junior developers starting their first job..."></textarea>
+                        </div>
+
+                        <div class="row g-3 mb-4">
+                            <div class="col-md-6">
+                                <label for="" class="form-label">Tone</label>
+                                <select name="tone" class="form-select">
+                                    <option>Professional</option>
+                                    <option>Inspirational</option>
+                                    <option>Educational</option>
+                                    <option>Controvesial</option>
+                                    <option>Funny/Witty</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-dark btn-lg w-100 py-3 rounded-3 shadow-sm mb-4">
+                            Generate Post <i class="bi bi-stars ms"></i>
+                        </button>
+                    </form>
+
+                    <div class="p-4 rounded-3 border bg-light">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success">AI Generated Result</span>
+                            <button class="btn btn-sm btn-outline-secondary"><i class="bi bi-clipboard"></i></button>
+                        </div>
+
+                        <div id="ai-response">
+                            {% if generated_post %}
+                                <p class="">{{ generated_post }}</p>
+                            {% else %}
+                                <p class="text-secondary mb-0">Your viral post will appear here after clicking generate...</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>PostGenius AI | Generate Viral Posts</title>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+        <style>
+            .gradient-text{
+                background: linear-gradient(90deg, #0d6efd, #0dcaf0);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .hero-section{
+                background: linear-gradient(135deeg, #f8f9fa 0%, #e9ecef 100%);
+                padding: 100px 0;
+            }
+            .app-card{
+                border: none;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom sticky-top">
+            <div class="container">
+                <a href="{% url 'index' %}" class="navbar-brand fw-bold text-primary">
+                    <i class="bi bi-robot me-2"></i>PostGenius
+                </a>
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Generator</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a> </li>
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="POST" class="d-inline">
+                                {% csrf_token %}
+                                <button class="btn nav-link text-danger border-0 bg-transparent" type="submit">Logout</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a> </li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Sign Up</a> </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        {% block content %}{% endblock %}
+
+        <footer class="py-4 text-center text-muted border-top mt-5">
+            <p>&copy;2026 PostGenius AI - Built with Django & Bootstrap</p>
+        </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.8/js/bootstrap.min.js"></script>
+    </body>
+</html>
